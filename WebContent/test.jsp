@@ -14,7 +14,6 @@
   <br>
   總價: {{ quantity * price }}
   
-<h1><%=request.getAttribute("result") %></h1>
 <form action="test3" method="get">
 	<input type="submit" value="log out" />
 </form>

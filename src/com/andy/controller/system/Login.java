@@ -22,6 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.andy.model.system.UsersModel;
+import com.andy.system.modelObj.User;
 import com.andy.system.util.SessionObj;
 
 /**
@@ -63,8 +64,11 @@ public class Login extends BaseServlet {
 			return;
 		}
 		
+		SessionObj.setRole(request.getSession(), this.role);
+		SessionObj.setTargetPage(request.getSession(), "index.jsp");
+		
 		log.error("login afterGet...2");
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("index");
 	}
 
 	@Override
@@ -89,9 +93,11 @@ public class Login extends BaseServlet {
 			return;
 		}
 		
-		SessionObj.setRole(request.getSession(), "true");
+		SessionObj.setRole(request.getSession(), new User(strEmail));
+		SessionObj.setTargetPage(request.getSession(), "index.jsp");
 		
-		response.sendRedirect("index.jsp");
+//		response.sendRedirect("wholePage.jsp");
+		response.sendRedirect("index");
 	}
 
 }

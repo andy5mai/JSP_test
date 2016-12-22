@@ -44,7 +44,7 @@ public class Logout extends BaseServlet {
 		session.invalidate();
 		this.role = null;
 		
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("login");
 	}
 
 }

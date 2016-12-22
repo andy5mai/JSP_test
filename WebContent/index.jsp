@@ -6,9 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href=css/bootstrap.min.css rel=stylesheet>
-<link href=css/login.css rel=stylesheet>
 </head>
 <body>
+<%@include file="leftMenu.jsp" %>
 <div class=container>
 	<form class=form-signin role=form action="logout" method="post">
 		<button class="btn btn-lg btn-primary btn-block" type=submit>Log out</button>

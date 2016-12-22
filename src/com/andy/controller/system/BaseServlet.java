@@ -20,6 +20,7 @@ import org.slf4j.impl.StaticLoggerBinder;
 import org.apache.log4j.Level;
 import org.apache.log4j.PropertyConfigurator;
 
+import com.andy.system.modelObj.IRole;
 import com.andy.system.util.MySQL;
 import com.andy.system.util.SessionObj;
 
@@ -30,7 +31,7 @@ public abstract class BaseServlet extends HttpServlet {
 	protected static String errorMsgAttrName = "errorMsg";
 	protected static String contentType_Text = "text/html;charset=UTF-8";
 	
-	protected Object role = null;
+	protected IRole role = null;
 	protected Connection conn;
 	protected String contentType;
 	
@@ -49,8 +50,7 @@ public abstract class BaseServlet extends HttpServlet {
 	protected boolean validateRole(HttpSession httpSession) {
 		this.role = null;
 		
-		if (SessionObj.getRole(httpSession) != null) {
-			this.role = true;
+		if ((this.role = SessionObj.getRole(httpSession)) != null) {
 			return true;
 		}
 		
@@ -61,7 +61,7 @@ public abstract class BaseServlet extends HttpServlet {
 		response.setContentType(this.contentType);
 		
 		if (!this.validateRole(request.getSession()) && this.getClass() != Login.class) {
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("login");
 			return;
 		}
 		log.error("doGet validate role...");
@@ -75,7 +75,7 @@ public abstract class BaseServlet extends HttpServlet {
 		response.setContentType(this.contentType);
 		
 		if (!this.validateRole(request.getSession()) && this.getClass() != Login.class) {
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("login");
 			return;
 		}
 		log.error("doPost validate role success!");
