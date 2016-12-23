@@ -5,7 +5,9 @@
 <head>
 <title>Insert title here</title>
 <link href=css/bootstrap.min.css rel=stylesheet>
-<script src=https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js></script>
+<link href="css/index.css" rel="stylesheet">
+<!-- <script src=https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js></script>  -->
+<script src="js/angular.min.js"></script>
 <style>
 </style>
 </head>
