@@ -31,6 +31,7 @@ public abstract class BaseServlet extends HttpServlet {
 	protected static String errorMsgAttrName = "errorMsg";
 	protected static String contentType_Text = "text/html;charset=UTF-8";
 	
+	protected boolean needValid = true;
 	protected IRole role = null;
 	protected Connection conn;
 	protected String contentType;
@@ -48,6 +49,9 @@ public abstract class BaseServlet extends HttpServlet {
 	}
 		
 	protected boolean validateRole(HttpSession httpSession) {
+		
+		if (!this.needValid) return true;
+		
 		this.role = null;
 		
 		if ((this.role = SessionObj.getRole(httpSession)) != null) {
